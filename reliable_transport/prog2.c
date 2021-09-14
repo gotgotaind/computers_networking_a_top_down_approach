@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 /* ******************************************************************
  ALTERNATING BIT AND GO-BACK-N NETWORK EMULATOR: VERSION 1.1  J.F.Kurose
@@ -36,6 +37,7 @@ struct pkt {
 
 /********* STUDENTS WRITE THE NEXT SEVEN ROUTINES *********/
 
+int a_seqnum,a_acknum,b_seqnum,b_acknum;
 
 
 
@@ -43,7 +45,8 @@ struct pkt {
 A_output(message)
   struct msg message;
 {
-
+  struct pkt packet;
+  tolayer3(0,packet);
 }
 
 B_output(message)  /* need be completed only for extra credit */
@@ -251,7 +254,7 @@ init()                         /* initialize the simulator */
     printf("It is likely that random number generation on your machine\n" ); 
     printf("is different from what this emulator expects.  Please take\n");
     printf("a look at the routine jimsrand() in the emulator code. Sorry. \n");
-    exit();
+    exit(1);
     }
 
    ntolayer3 = 0;
@@ -283,7 +286,7 @@ generate_next_arrival()
 {
    double x,log(),ceil();
    struct event *evptr;
-    char *malloc();
+   // char *malloc();
    float ttime;
    int tempint;
 
@@ -394,7 +397,7 @@ float increment;
 
  struct event *q;
  struct event *evptr;
- char *malloc();
+ // char *malloc();
 
  if (TRACE>2)
     printf("          START TIMER: starting timer at %f\n",time);
@@ -422,7 +425,7 @@ struct pkt packet;
 {
  struct pkt *mypktptr;
  struct event *evptr,*q;
- char *malloc();
+ // char *malloc();
  float lastime, x, jimsrand();
  int i;
 

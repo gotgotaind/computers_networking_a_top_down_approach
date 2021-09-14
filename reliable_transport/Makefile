@@ -1,7 +1,7 @@
 # specify all source files here
-SRCS = wzip.c
+SRCS = prog2.c
 # specify target here (name of executable)
-TARG = wzip
+TARG = prog
 # specify compiler, compile flags, and needed libs
 CC = gcc
 OPTS = -Wall -O -pedantic -g
