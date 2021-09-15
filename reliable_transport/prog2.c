@@ -36,10 +36,18 @@ struct pkt {
     };
 
 /********* STUDENTS WRITE THE NEXT SEVEN ROUTINES *********/
-
+// initialize the global variables that will be used as state variables
+// for a and b fsa
 int a_seqnum,a_acknum,b_seqnum,b_acknum;
 
-
+// checksum function of a packet
+int ck_sum(struct pkt p) {
+  int sum=p.seqnum+p.acknum;
+  for(int i=0;i<20;i++) {
+    sum+=p.payload[i];
+  }
+  return sum;
+}
 
 /* called from layer 5, passed the data to be sent to other side */
 A_output(message)
@@ -235,15 +243,20 @@ init()                         /* initialize the simulator */
   
    printf("-----  Stop and Wait Network Simulator Version 1.1 -------- \n\n");
    printf("Enter the number of messages to simulate: ");
-   scanf("%d",&nsimmax);
+   // scanf("%d",&nsimmax);
+   nsimmax=5;
    printf("Enter  packet loss probability [enter 0.0 for no loss]:");
-   scanf("%f",&lossprob);
+   // scanf("%f",&lossprob);
+   lossprob=0;
    printf("Enter packet corruption probability [0.0 for no corruption]:");
-   scanf("%f",&corruptprob);
+   // scanf("%f",&corruptprob);
+   corruptprob=0;
    printf("Enter average time between messages from sender's layer5 [ > 0.0]:");
-   scanf("%f",&lambda);
+   // scanf("%f",&lambda);
+   lambda=0.5;
    printf("Enter TRACE:");
-   scanf("%d",&TRACE);
+   // scanf("%d",&TRACE);
+   TRACE=2;
 
    srand(9999);              /* init random number generator */
    sum = 0.0;                /* test random number generator for students */
