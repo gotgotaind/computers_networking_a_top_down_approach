@@ -1,7 +1,7 @@
 # specify all source files here
-SRCS = prog2.c
+SRCS = $(s)
 # specify target here (name of executable)
-TARG = prog
+TARG = $(s).exe
 # specify compiler, compile flags, and needed libs
 CC = gcc
 OPTS = -Wall -O -pedantic -g
